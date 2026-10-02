@@ -1,0 +1,66 @@
+body {
+    font-family: Georgia, serif;
+    background: #2b2a27;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+#gameBoard {
+    width: 480px;
+    height: 480px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 6px solid #3d2b1f;
+    box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+.square {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.beige { background-color: #eeddb9; }
+.brown { background-color: #9c6b48; }
+.square.selected { box-shadow: inset 0 0 0 4px #f6d13a; }
+.square.hint::after {
+    content: "";
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.25);
+    position: absolute;
+    pointer-events: none;
+}
+.square.hint.capture::after {
+    width: 54px; height: 54px;
+    background: transparent;
+    border: 4px solid rgba(0,0,0,.3);
+}
+.square.in-check { background: radial-gradient(#ff4d4d, transparent 75%); }
+.piece { width: 50px; height: 50px; cursor: grab; }
+.piece svg { width: 100%; height: 100%; pointer-events: none; }
+.white svg g { fill: #fff; stroke: #222; }
+.black svg g { fill: #222; stroke: #ddd; }
+.black svg circle[fill="black"] { fill: #ddd; }
+p { margin: 8px 0; font-size: 18px; }
+#info-display { color: #f6d13a; min-height: 24px; }
+button {
+    margin-top: 8px; padding: 8px 18px; font-size: 16px;
+    background: #9c6b48; color: #fff; border: none; border-radius: 6px; cursor: pointer;
+}
+[hidden] { display: none !important; }
+#promotion { background: #3d2b1f; padding: 10px 16px; border-radius: 8px; text-align: center; }
+.promo-row { display: flex; gap: 8px; }
+.promo-btn { background: #eeddb9; padding: 4px; margin: 0; }
+.promo-btn .piece { cursor: pointer; }
+#scores { margin-top: 16px; text-align: center; }
+.score-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.score-card { background: #3d2b1f; border-radius: 8px; padding: 12px 20px; min-width: 180px; text-align: left; }
+.score-card.winner { box-shadow: 0 0 0 3px #f6d13a; }
+.score-card h3 { margin: 0 0 4px; }
+.score-card .big { font-size: 36px; color: #f6d13a; }
+.score-card ul { list-style: none; padding: 0; margin: 8px 0 0; line-height: 1.6; }
+.note { font-size: 13px; color: #bbb; }
